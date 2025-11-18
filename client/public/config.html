@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Konfigurasi Target | Honeypot</title>
+  <link rel="stylesheet" href="/styles/traffic-monitor.css">
+  <style>
+    .config-container { max-width:900px; margin:20px auto; padding:16px; background:#fff; border:1px solid #e6e6e6; border-radius:6px; }
+    label { display:block; margin:8px 0 4px; font-weight:600; }
+    input[type="text"], textarea { width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; }
+    .btn { padding:8px 12px; margin-top:12px; cursor:pointer; }
+    .msg { margin-top:12px; padding:8px; border-radius:4px; }
+    .msg.ok { background:#e6ffea; border:1px solid #b7f0c4; color:#0a6b2f; }
+    .msg.err { background:#ffe6e6; border:1px solid #f0b7b7; color:#7a0a0a; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="padding:12px 20px; margin:0; background:#0b3954; color:white;">Konfigurasi Honeypot</h1>
+  </header>
+
+  <main class="config-container">
+    <h2>Target dan Port Monitoring</h2>
+    <form id="config-form">
+      <label for="target-domain">Domain / IP Target</label>
+      <input id="target-domain" type="text" placeholder="contoh: example.com atau 192.0.2.5" required>
+
+      <label for="target-ports">Port (pisahkan dengan koma) — port yang akan dipantau</label>
+      <input id="target-ports" type="text" placeholder="contoh: 22,80,443">
+
+      <div style="display:flex; gap:12px; align-items:center; margin-top:8px;">
+        <button class="btn" id="btn-save" type="submit">Simpan</button>
+        <button class="btn" id="btn-reset" type="button">Reset ke default</button>
+        <div id="saving" style="margin-left:12px; color:#666; display:none">Menyimpan...</div>
+      </div>
+
+      <div id="msg" role="status" aria-live="polite"></div>
+    </form>
+
+    <section style="margin-top:18px;">
+      <h3>Konfigurasi saat ini</h3>
+      <div><strong>Target:</strong> <span id="current-target">-</span></div>
+      <div style="margin-top:8px"><strong>Ports:</strong> <span id="current-ports">-</span></div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/config.ts"></script>
+</body>
+</html>

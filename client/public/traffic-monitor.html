@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Traffic Monitor</title>
+  <link rel="stylesheet" href="/styles/traffic-monitor.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Traffic Monitor</h1>
+    <div id="clock" class="clock">--:--:--</div>
+  </header>
+
+  <nav>
+    <button id="btn-dashboard">Monitor</button>
+    <button id="btn-realtime">Real-Time Traffic Analysis (grafik)</button>
+  </nav>
+
+  <main>
+    <section id="monitor-section">
+      <table id="traffic-table">
+        <thead>
+          <tr>
+            <th>Waktu (Local)</th>
+            <th>Src IP</th>
+            <th>Dst IP</th>
+            <th>Bytes</th>
+            <th>Score</th>
+            <th>Mitigasi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="chart-section" style="display:none">
+      <canvas id="traffic-chart" height="120"></canvas>
+    </section>
+  </main>
+
+  <div id="modal" class="modal" style="display:none">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <pre id="modal-body"></pre>
+    </div>
+  </div>
+
+  <script type="module" src="/src/traffic-monitor.ts"></script>
+  <script type="module" src="/src/dashboard-chart.ts"></script>
+</body>
+</html>
